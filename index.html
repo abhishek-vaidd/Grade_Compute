@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-image: url('https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=869&q=80');background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;">
+    <div class="body-container">
+            <h1 class="header">Submit your marks here.....!!</h1>
+            <div class="form-container-group">
+                <input type="text" placeholder="English" id="Eng">
+            </div>
+            <div class="form-container-group">
+                <input type="text" placeholder="Maths" id="Maths">
+            </div>
+            <div class="form-container-group">
+                <input type="text" placeholder="Hindi" id="Hindi">
+            </div>
+            <div class="form-container-group">
+                <input type="text" placeholder="Science" id="Science">
+            </div>
+            <div class="form-container-group">
+                <input type="text" placeholder="Social Studies" id="Social-Studies">
+            </div>
+            <div>
+                <input type="button" value="Compute Percentage" class="form-container-group-button" onclick="calc()">
+            </div>
+            <div class="app-form-group showdata">
+                <p id="showData"></p>
+            </div>
+    </div>
+<script>
+
+    const calc = ()=>{
+        let eng = document.getElementById('Eng').value;
+        let ma = document.getElementById('Maths').value;
+        let hin = document.getElementById('Hindi').value;
+        let sci = document.getElementById('Science').value;
+        let ss = document.getElementById('Social-Studies').value;
+        let perc;
+        let grade = "";
+
+
+        let totalGrades = parseFloat(eng) + parseFloat(ma) + parseFloat(hin) + parseFloat(sci) + parseFloat(ss);
+        console.log(totalGrades);
+
+        perc= (totalGrades/500)*100;
+        console.log(perc);
+
+        if(perc<=100)
+        {
+            if(perc<= 100 && perc>=80)
+            {
+                grade= 'A';
+            }
+            else if(perc<= 79 && perc>= 60)
+            {
+                grade= 'B';
+            }
+            else if(perc<= 59 && perc>= 40)
+            {
+                grade= 'C';
+            }
+            else if(perc<=39)
+            {
+                grade= 'F';
+            }
+
+        console.log(grade);
+
+            if(perc>=39.5)
+            {
+                document.getElementById('showData').innerHTML = ` Out of 500 your total
+                is ${totalGrades} ,percentage is ${perc}% <br> Grade is ${grade} <br> 
+                You are Passed `;
+            }
+            else
+            {
+                document.getElementById('showData').innerHTML = ` Out of 500 your total
+                is ${totalGrades} ,percentage is ${perc}% <br> Grade is ${grade} <br>
+                You are Failed `;
+            }
+        }
+        else
+        {
+            document.getElementById('showData').innerHTML = ` Invalid Percentage `;
+        }
+    }
+
+</script>
+</body>
+</html>
